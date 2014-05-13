@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <link rel='stylesheet' type='text/css' href='style.php'/>
+    <link rel='stylesheet' type='text/css' href='style.css'/>
     <body>
-        
         
         <h1>The Ultimate Tiny List of Drummers One Specific Dude Really Likes</h1><br>
         
@@ -30,7 +29,7 @@ if(!isset($_POST["filter_alive"])){
   }
 
 if(isset($_POST["sort_drop"])){
-    $acceptableSortValues = array('last_name', 'age', 'style');
+    $acceptableSortValues = ['last_name', 'age', 'style'];
     $sort_on = $_POST["sort_drop"];
     
     if(in_array($sort_on, $acceptableSortValues) && $alive == "checked"){
