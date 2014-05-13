@@ -6,8 +6,6 @@ header('Content-type: text/css');
 
 
 h1 {
-   
-    border: 5px solid black;
     height: fit-content;
     width: fit-content;
     padding: 20px;
@@ -28,9 +26,8 @@ form {
     padding: 5px;
 }
 .sort{
-    
     height: 35px;
-    width:75px;
+    width:90px;
     font-size: 20px;
 }
 
@@ -47,14 +44,14 @@ img {
     
 }
 
+
 td {
     border-radius: 20px;
+    margin:10px 10px;
 
 }
 tr {
 
-    
-    border: 5px solid black;
     height: fit-content;
     width: fit-content;
     padding: 20px;
@@ -63,7 +60,7 @@ tr {
     border: 10px solid black;
     border-radius: 20px;
     text-align: left;
-    margin:10px;
+    margin:20px;
     box-shadow: 5px 5px 20px 5px #211A14;
     font-size:20px;
     text-shadow: 2px 2px 10px #0D2B21;
@@ -82,7 +79,8 @@ body {
 .info {
     border: 5px outset grey;    
     background-color: #C2E4FF;
-    padding:10px
+    padding:10px;
+    height:-5px;
 }
 table {
     display:table;
@@ -98,6 +96,9 @@ div{
     border: 5px solid black;
     display:table;
     padding: 20px;
-    border-radius:10px;
-    margin-right:20px;
+    border-radius:20px;
+    margin-right:265px;
+    margin-top:25px;
+    box-shadow: 5px 5px 20px 5px #211A14;
+    border: 10px solid black;
 }
