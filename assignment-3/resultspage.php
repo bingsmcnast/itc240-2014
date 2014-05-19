@@ -18,53 +18,19 @@
 <?php 
   
 $div = "<div>";
-
-if(isset($_POST['genre'])){
-
-    $genre = array();
-    foreach ($drummers as $key => $row){
-        $genre[$key] = $row['style'];
-    }
-    
-    array_multisort($genre, SORT_ASC, $drummers);
-}
-
-if(isset($_POST['name'])){
-
-    $name = array();
-    foreach ($drummers as $key => $row){
-        $name[$key] = $row['last_name'];
-    }
-    
-    array_multisort($name, SORT_ASC, $drummers);
-}
-
-if(isset($_POST['age'])){
-
-    $age = array();
-    foreach ($drummers as $key => $row){
-        $age[$key] = $row['age'];
-    }
-    
-    array_multisort($age, SORT_ASC, $drummers);
-}
-
-
-foreach($drummers as $drummer){
-    if(isset($_POST['favorite'])){
-    
-        if($drummer['favorite'] == true){
-            $div = "<div id='favorite'>";
-            include('info.php');
-        }else{
-            $div = "<div>";
-            include('info.php');
-        }
-    }else{
-        include('info.php');
-    }
-}    
 ?>
+
+<table>
+<?php
+foreach ($result as $row) {
+?>
+	<tr> 
+		<td><?= <img src= " . $row["image"]" ?>
+		<td><?= $row["style"] ?>
+<?php
+}
+?>
+</table>
         
     </body>
 </html>
