@@ -170,10 +170,10 @@ if($i%2==0){
   
 }
 ?>
-      <td><b>$<?= round($receipt["total_cost"],2) ?></b>
-    	<td><?= $receipt["where_spent"] ?>
-    	<td>Date: <?= $receipt["when_spent"]?>
-    	<td><?= $receipt["description"] ?>
+      <td><b>$<?= htmlentities(round($receipt["total_cost"],2)) ?></b>
+    	<td><?= htmlentities($receipt["where_spent"]) ?>
+    	<td>Date: <?= htmlentities($receipt["when_spent"])?>
+    	<td><?= htmlentities($receipt["description"]) ?>
       <td><a href="?update=<?= $receipt["id"] ?>"><img style="border:0;" src="edit.png"></a>
       <td><a href="?delete=<?= $receipt["id"] ?>"><img style="border:0;" src="delete.png"></a>  
     </tr>
