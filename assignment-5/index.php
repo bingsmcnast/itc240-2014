@@ -58,38 +58,38 @@ if (isset($_REQUEST["update"])){
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery-ui-1.10.4.custom.js"></script>
 <script src="js/script.js"></script>
-<link href="style.css" type="text/css" rel="stylesheet">
+<link href="style2.css" type="text/css" rel="stylesheet">
 
-</head>	
+</head> 
   <body>
     <div class='content'>
     <h1><?= $header ?></h1>
     <form action="index.php" method="post">
       <br>
       <div class='left'>
-      	<input name="cost" placeholder="Total Cost" <?= $prepop_cost ?>><br><br>
-      	<input name="where" placeholder="Where Spent" <?= $prepop_where ?>><br><br>
+        <input name="cost" placeholder="Total Cost" <?= $prepop_cost ?>><br><br>
+        <input name="where" placeholder="Where Spent" <?= $prepop_where ?>><br><br>
         <input name="when" id="datepicker" placeholder="Date"<?= $prepop_when ?>><br><br>
-      	<input name="what" placeholder="Description" class ='textbox' <?= $prepop_what ?>></textarea>
-  	    <input name="update_id" type="hidden" <?= $prepop_update_id ?>>  
+        <input name="what" placeholder="Description" class ='textbox' <?= $prepop_what ?>></textarea>
+        <input name="update_id" type="hidden" <?= $prepop_update_id ?>>  
       </div>
       <div class="right">
-      	<input class ='button' type="submit" value="Submit"><br>
-      	<select name= 'month_sort'>
-      		<option value="0" selected>Choose Month</option>
+        <input class ='button' type="submit" value="Submit"><br>
+        <select name= 'month_sort'>
+          <option value="0" selected>Choose Month</option>
           <option value="100">All</option>
           <option value="1">January</option>
-      		<option value="2">February</option>
-      		<option value="3">March</option>
-      		<option value="4">April</option>
-      		<option value="5">May</option>
-      		<option value="6">June</option>
-      		<option value="7">July</option>
-      		<option value="8">August</option>
-      		<option value="9">September</option>
-      		<option value="10">October</option>
-      		<option value="11">November</option>
-      		<option value="12">December</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
       </select>
       </div>
     </form>
@@ -135,16 +135,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(isset($month) && $month !=="0" && $month !=="100"){
   $select = 'SELECT total_cost, where_spent, when_spent, description, id FROM expenses where MONTH(when_spent) = ? ;';
   $select_prep = $mysql->prepare($select);
-  $select_prep->bind_param("s", $_REQUEST["month_sort"]);	
+  $select_prep->bind_param("s", $_REQUEST["month_sort"]); 
+
+  $sumQuery= 'SELECT sum(total_cost) as sum FROM expenses where MONTH(when_spent) = ? ;'; 
+  $sumQuery_prep = $mysql->prepare($sumQuery);
+  $sumQuery_prep->bind_param("s", $_REQUEST["month_sort"]);
+  $sumQuery_prep->execute();
+  $sumResult= $sumQuery_prep->get_result();
+
 }else{
   $select = 'SELECT total_cost, where_spent, when_spent, description, id FROM expenses;';
   $select_prep = $mysql->prepare($select);
+
+  $sumQuery= $mysql->prepare('SELECT sum(total_cost) as sum FROM expenses;');
+  $sumQuery->execute();
+  $sumResult= $sumQuery->get_result();
+ 
 }
 
 $select_prep->execute();
 
 $receipts = $select_prep->get_result();
+
+$sum = $sumResult->fetch_array();
+
 ?>
+   <div class="outputSum">
+    <h3>Total<br>$<?= round($sum["sum"],2) ?></h3>
+  </div>
+
   <table class="output2">
     <thead>
       <tr>
@@ -171,9 +190,9 @@ if($i%2==0){
 }
 ?>
       <td><b>$<?= htmlentities(round($receipt["total_cost"],2)) ?></b>
-    	<td><?= htmlentities($receipt["where_spent"]) ?>
-    	<td>Date: <?= htmlentities($receipt["when_spent"])?>
-    	<td><?= htmlentities($receipt["description"]) ?>
+      <td><?= htmlentities($receipt["where_spent"]) ?>
+      <td>Date: <?= htmlentities($receipt["when_spent"])?>
+      <td><?= htmlentities($receipt["description"]) ?>
       <td><a href="?update=<?= $receipt["id"] ?>"><img style="border:0;" src="edit.png"></a>
       <td><a href="?delete=<?= $receipt["id"] ?>"><img style="border:0;" src="delete.png"></a>  
     </tr>
@@ -185,6 +204,7 @@ if($i%2==0){
 
   </div>
   </div>
+ 
  </body>
 
 </html>
