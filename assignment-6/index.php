@@ -46,7 +46,7 @@ $max = $maxResult->fetch_array();
   
 <?php
 if(isset($_REQUEST["message"])){
-	echo "<h2>" . $_REQUEST["message"] . "</h2>";
+	echo "<h2>" . htmlentities($_REQUEST["message"]) . "</h2>";
 
 } 
 ?>
