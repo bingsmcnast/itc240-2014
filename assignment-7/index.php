@@ -14,6 +14,8 @@ if (isset($_COOKIE['theme'])){
 		default:
 		$theme_drop = "light.css";
 	}
+}else{
+	$theme_drop = "light.css";
 }
 ?>	
 	
@@ -74,6 +76,8 @@ if(isset($_COOKIE['view'])){
 	}else{
 		include ("coverview.php");
 	}
+}else{
+	include ("coverview.php");
 }
    
 ?>
