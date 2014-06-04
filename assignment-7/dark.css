@@ -1,0 +1,82 @@
+body {
+    background-color: black;
+}
+
+form , input , select {
+    font-size: 20px;
+    background-color: #161717;
+    color: #8E9595;
+}
+
+form{
+    padding: 20px;
+    margin-bottom: 1%;
+}
+.book {
+    text-align: left;
+    
+}
+
+.even {
+    background-color: #ACC285;
+    border: 5px solid black;
+}
+
+.odd {
+    background-color: #485039;
+    border: 5px solid black;
+}
+
+.thumb {
+    border: 2px solid black;
+    float:left; 
+    border-radius: 10px;
+    display:inline; 
+    width: 30%;
+    clear: left;
+    padding: 10px;
+    margin-right: 5%;
+    
+}   
+
+img {
+    width: 95%;
+}
+.info {
+    float:left; 
+    display:inline; 
+    width: 45%;
+    padding: 15px;
+    background-color: #02194E;
+    color: #8E9595;
+    font-size: 30px;
+    border-radius: 15px;
+    clear: left;
+    border: 5px solid #5C5C5C; 
+    margin-bottom: 1%;
+    
+
+}
+.descrip {
+ background-color: #ACC285;
+ float: left;
+ clear: left;
+ color: #8E9595;
+ background-color: #0D214E;
+}
+
+h1{
+    color: #8E9595;
+    font-size: 50px;
+    background-color: #880010;
+    padding: 15px;
+}
+
+.button{
+    height: 100px;
+    width:200px;
+    vertical-align: center;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-color: #880010;
+}
