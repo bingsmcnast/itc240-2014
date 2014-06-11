@@ -1,0 +1,32 @@
+body {
+	background-color: #C7C7C7;
+	font-size: 18px;
+}
+
+thead {
+	background-color: #7998E1;
+}
+
+tr {
+	background-color: #94ACE1;
+	padding: 5px;
+}
+
+td{
+	padding: 5px;
+}
+
+table {
+	background-color: #4A6FC3;
+
+}
+
+input{
+	padding: 10px;
+	margin-bottom: 15px;
+}
+
+ .highlight {
+	background-color: #FF8073;
+
+}
